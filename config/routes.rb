@@ -1,4 +1,6 @@
 Tasks::Application.routes.draw do
+  resources :projects
+
   devise_for :users
   resources :tasks
 
@@ -6,11 +8,10 @@ Tasks::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'tasks#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
-
+  root 'projects#index'
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

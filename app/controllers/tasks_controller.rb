@@ -31,10 +31,11 @@ class TasksController < ApplicationController
   def create
     @task 	  = Task.new(task_params)
     @task.user_id = current_user.id
-
+    @task.project_id = params[:task][:project_id]
+    
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to "/projects/#{@task.project_id}" }
         format.json { render action: 'show', status: :created, location: @task }
       else
         format.html { render action: 'new' }
@@ -57,7 +58,7 @@ class TasksController < ApplicationController
     end
   end
 
-  # DELETE /tasks/1
+  #.id
   # DELETE /tasks/1.json
   def destroy
     @task.destroy
